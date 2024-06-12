@@ -1,0 +1,10 @@
+ALTER TABLE ExpenseLine ADD CONSTRAINT fkc_ExpenseLine_ExpenseReport FOREIGN KEY (id_ExpenseRepor) REFERENCES ExpenseReport;
+ALTER TABLE ExpenseLine ADD CONSTRAINT fkc_ExpenseLine_ExpenseType FOREIGN KEY (TypeCode) REFERENCES ExpenseType;
+ALTER TABLE ExpenseReport ADD CONSTRAINT fkc_ExpenseReport_Employee FOREIGN KEY (id_Employee) REFERENCES Employee;
+ALTER TABLE ExpenseReport ADD CONSTRAINT fkc_ExpenseReport_ExpenseCurrency FOREIGN KEY (CurrencyCode) REFERENCES ExpenseCurrency;
+ALTER TABLE ExpenseReport ADD CONSTRAINT fkc_ExpenseReport_PaymentType FOREIGN KEY (id_PaymentType) REFERENCES PaymentType;
+ALTER TABLE ExpenseReport ADD CONSTRAINT fkc_ExpenseReport_Project FOREIGN KEY (id_Project) REFERENCES Project;
+ALTER TABLE Assignment ADD CONSTRAINT fkc_Assignment_Employee FOREIGN KEY (id_Employee) REFERENCES Employee;
+ALTER TABLE Assignment ADD CONSTRAINT fkc_Assignment_Project FOREIGN KEY (id_Project) REFERENCES Project;
+ALTER TABLE AdminUser ADD CONSTRAINT fkc_AdminUser_ FOREIGN KEY (Login) REFERENCES AppUser;
+ALTER TABLE OperatorUser ADD CONSTRAINT fkc_OperatorUser_ FOREIGN KEY (Login) REFERENCES AppUser;

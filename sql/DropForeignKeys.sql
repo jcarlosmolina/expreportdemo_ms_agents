@@ -1,0 +1,10 @@
+ALTER TABLE ExpenseLine DROP CONSTRAINT fkc_ExpenseLine_ExpenseReport;
+ALTER TABLE ExpenseLine DROP CONSTRAINT fkc_ExpenseLine_ExpenseType;
+ALTER TABLE ExpenseReport DROP CONSTRAINT fkc_ExpenseReport_Employee;
+ALTER TABLE ExpenseReport DROP CONSTRAINT fkc_ExpenseReport_ExpenseCurrency;
+ALTER TABLE ExpenseReport DROP CONSTRAINT fkc_ExpenseReport_PaymentType;
+ALTER TABLE ExpenseReport DROP CONSTRAINT fkc_ExpenseReport_Project;
+ALTER TABLE Assignment DROP CONSTRAINT fkc_Assignment_Employee;
+ALTER TABLE Assignment DROP CONSTRAINT fkc_Assignment_Project;
+ALTER TABLE AdminUser DROP CONSTRAINT fkc_AdminUser_;
+ALTER TABLE OperatorUser DROP CONSTRAINT fkc_OperatorUser_;

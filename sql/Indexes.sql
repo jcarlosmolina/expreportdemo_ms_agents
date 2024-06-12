@@ -1,0 +1,10 @@
+CREATE INDEX idx_ExpenseLine_ExpenseReport ON ExpenseLine(id_ExpenseRepor) WITH PAD_INDEX;
+CREATE INDEX idx_ExpenseLine_ExpenseType ON ExpenseLine(TypeCode) WITH PAD_INDEX;
+CREATE INDEX idx_ExpenseReport_Employee ON ExpenseReport(id_Employee) WITH PAD_INDEX;
+CREATE INDEX idx_ExpenseReport_ExpenseCurrency ON ExpenseReport(CurrencyCode) WITH PAD_INDEX;
+CREATE INDEX idx_ExpenseReport_PaymentType ON ExpenseReport(id_PaymentType) WITH PAD_INDEX;
+CREATE INDEX idx_ExpenseReport_Project ON ExpenseReport(id_Project) WITH PAD_INDEX;
+CREATE INDEX idx_Assignment_Employee ON Assignment(id_Employee) WITH PAD_INDEX;
+CREATE INDEX idx_Assignment_Project ON Assignment(id_Project) WITH PAD_INDEX;
+CREATE INDEX idx_AdminUser_ ON AdminUser(Login) WITH PAD_INDEX;
+CREATE INDEX idx_OperatorUser_ ON OperatorUser(Login) WITH PAD_INDEX;
