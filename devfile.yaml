@@ -24,7 +24,7 @@ components:
     image:
       imageName: expreportdemo-ms-agents:latest
       dockerfile:
-        uri: src/main/docker/Dockerfile.jvm
+        uri: src/main/docker/Dockerfile.jvm.staged
         buildContext: .
         rootRequired: false
   - name: kubernetes-deploy
