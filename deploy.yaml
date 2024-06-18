@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: expreportdemo-ms-agents
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expreportdemo-ms-agents
+  template:
+    metadata:
+      labels:
+        app: expreportdemo-ms-agents
+    spec:
+      containers:
+        - name: expreportdemo-ms-agents
+          image: expreportdemo-ms-agents:latest
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "10m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: expreportdemo-ms-agents
+spec:
+  ports:
+    - name: http-8081
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: expreportdemo-ms-agents
