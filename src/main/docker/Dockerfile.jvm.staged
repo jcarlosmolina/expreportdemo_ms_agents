@@ -26,6 +26,7 @@ COPY ./pom.xml .
 RUN mvn dependency:go-offline
 
 COPY ./src src
+ENV MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 RUN mvn package -Dmaven.test.skip=true
 
 RUN grep version /target/maven-archiver/pom.properties | cut -d '=' -f2 >.env-version
