@@ -1,3 +1,27 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: expensereportdemo-secret
+data:
+  db-password: SW50M2dyNG4wdjQ=
+  db-username: SW50ZWdyYW5vdmE=
+type: Opaque
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: expensereportdemo-config
+data:
+  assignments-database-jdbc-url: 'jdbc:sqlserver://sotersqlserver.database.windows.net;databaseName=SOTER;encrypt=true'
+  assignments-url: 'http://expreportdemo-ms-assignments:8084'
+  operation-url: 'http://expreportdemo-ms-operation:8083'
+  operation-database-jdbc-url: 'jdbc:sqlserver://sotersqlserver.database.windows.net;databaseName=SOTER;encrypt=true'
+  agents-url: 'http://expreportdemo-ms-agents:8081'
+  agents-database-jdbc-url: 'jdbc:sqlserver://sotersqlserver.database.windows.net;databaseName=SOTER;encrypt=true'
+  expensereportdemo-url: 'http://expreportdemo-api-gateway:8080'
+  masters-database-jdbc-url: 'jdbc:sqlserver://sotersqlserver.database.windows.net;databaseName=SOTER;encrypt=true'
+  masters-url: 'http://expreportdemo-ms-masters:8082'
+---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -19,6 +43,22 @@ spec:
             - name: http
               containerPort: 8081
               protocol: TCP
+          env:
+          - name: quarkus.datasource.jdbc.url
+            valueFrom:
+              configMapKeyRef:
+                name: expensereportdemo-config
+                key: operation-database-jdbc-url
+          - name: quarkus.datasource.username
+            valueFrom:
+              secretKeyRef:
+                name: expensereportdemo-secret
+                key: db-username
+          - name: quarkus.datasource.password
+            valueFrom:
+              secretKeyRef:
+                name: expensereportdemo-secret
+                key: db-password
           resources:
             requests:
               memory: "100Mi"
