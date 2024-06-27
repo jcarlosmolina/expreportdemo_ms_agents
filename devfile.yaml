@@ -11,6 +11,7 @@ metadata:
   tags:
     - Java
     - Quarkus
+    - Openshift
   projectType: Quarkus
   language: Java
   attributes:
